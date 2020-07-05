@@ -8,41 +8,59 @@
         <title>ポートフォリオサイト</title>
         <link rel="icon" href="Create-WebSite/fabicon.ico">
         <meta name="description" content="ポートフォリオサイトです">
+        <link rel="stylesheet" href="Create-WebSite/code/styles.css">
     </head>
     <body>
         <header>
-            <img src="Create-WebSite/img/fabicon.jpg" width="240" height="240" alt="アイコン">
-            <h1>ry0chang</h1>
-            <p>Web design practice</p>
-            <ul>
-                <li>
-                    <a href="https://twitter.com/ry0_cha_ng">
-                        <img src="Create-WebSite/img/Twitter_Icon.png" width="28" height="28" alt="Twitterへのリンクアイコン">
-                    </a>
-                </li>
-                <li>
-                    <a href="https://github.com/ry0-cha-ng">
-                        <img src="Create-WebSite/img/github_Icon.png" width="36" height="36" alt="Githubへのリンクアイコン">
-                    </a>
-                </li>
-            </ul>
+            <div class="container">
+                <div class="icon">
+                    <img src="Create-WebSite/img/fabicon.jpg" width="160" height="160" alt="アイコン">
+                </div>
+                <div class="info">
+                    <h1>ry0chang</h1>
+                    <p>Web design practice</p>
+                    <ul>
+                        <li>
+                            <a href="https://twitter.com/ry0_cha_ng">
+                                <img src="Create-WebSite/img/Twitter_Icon.png" width="28" height="28" alt="Twitterへのリンクアイコン">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/ry0-cha-ng">
+                                <img src="Create-WebSite/img/github_Icon.png" width="36" height="36" alt="Githubへのリンクアイコン">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </header>
 
         <!-- 活動紹介 -->
-        <section>
+        <section class="works">
             <h1>WORKS</h1>
-        </section>
 
-        <section>
-            <h1>Easy Reservation of Live Ticket</h1>
-            <img src="Create-WebSite/img/EROLT.jpg" width="400" height="320" alr="EROLTのアイコン">
-            <p>LINEで簡単！ライブチケット予約サービス</p>
-        </section>
+                <section class="erolt">
+                    <img src="Create-WebSite/img/EROLT.jpg" width="300" height="240" alr="EROLTのアイコン">
+                    <div class="erolt_text">
+                        <h1>Easy Reservation of Live Ticket</h1>
+                        <p>LINEで簡単！ライブチケット予約サービス</p>
+                    </div>
+                </section>
 
-        <section>
-            <h1>Photograph</h1>
-            <img src="Create-WebSite/img/city.jpg" width="400" height="320" alr="写真例1">
-            <img src="Create-WebSite/img/guide.jpg" width="400" height="320" alr="写真例2">
+                <section class="photograph">
+                    <ul>
+                        <li>
+                            <img src="Create-WebSite/img/city.jpg" width="300" height="240" alr="写真例1">
+                        </li>
+                        <li>
+                            <img src="Create-WebSite/img/guide.jpg" width="300" height="240" alr="写真例2">
+                        </li>
+                    </ul>
+                    <div class="photograph_text">
+                        <h1>Photograph</h1>
+                        <p>何気なく目に映る風景を切り取ります</p>
+                    </div>
+                </section>
         </section>
 
         <footer>

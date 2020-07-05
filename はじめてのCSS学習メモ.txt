@@ -1,0 +1,65 @@
+#1 初めてのCSSを書いてみよう
+    <style></style>     ：スタイルタグ、どこに（セレクタ）どんなスタイルを設定するのか（プロパティ）を指定する
+    スタイルシートは別シートで管理することもできる（.cssファイル）
+
+#2 デベロッパーツールを使ってみよう
+    デベロッパーツールを開くショートカット：Ctrl + Shift + i
+
+#3 
+    色の表現方法
+        ・色の名前を文字で指定（red, blueなど）
+        ・rgbで指定（緑：0, 255, 0）
+        ・16進数表記（カラーコード、#00ff00など）
+
+        他にも明度や彩度とかもいじれる
+
+#4 フォントを設定していこう
+    font-famiry     ：フォントの指定
+    ★フォントの追加ってどうやるんだろう
+
+#5 CSSのボックスモデルを確認しよう
+    background-color    ：背景色の指定
+    
+    ボックスモデル：margin、border、paddingなどのプロパティを書き換えることで要素の見た目を変えられる
+
+#6 marginで外側の余白を設定しよう
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+
+    全部0の場合は単に下記でOK
+        margin: 0;
+    
+#7 divタグを使ってみよう
+    <div></div>     ：divタグ、レイアウトを整える（html）
+        class       ：要素の命名
+    
+    htmlでclass属性を設定し、そこにcssファイルで設定を加える感じ
+
+    中央揃えのやり方
+        margin-left: auto;
+        margin-right: auto;
+        これがよく使われる（自動で左右均等に設定される）
+
+#8 Flexboxを使ってみよう
+    Flexbox     ：要素を横並びに配置する
+                  親要素に下記設定する
+                    display: flex;
+
+#9 アイコン画像のスタイリングをしよう
+    ■アイコン画像を丸くしてみる
+        border-radius       ：領域の角を丸めるプロパティ、px指定のほか%指定もできる
+                              正円にするには50％としてやればよい
+    ■アイコンの周りに枠をつける
+        border-width        ：枠線の幅
+        border-style        ：枠線の種類、solid(実線)など
+        border-color        ：枠の色
+
+#12 align-itemsを使ってみよう
+    align-items     ：Flexbox内の要素の縦方向配置をする
+        
+    縦方向の中央揃え    
+        align-items: center;
+
+
