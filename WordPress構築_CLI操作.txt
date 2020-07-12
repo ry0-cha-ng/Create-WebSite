@@ -1,0 +1,58 @@
+■目次
+・WordPressのBitnamiのバナーを削除
+・LightsailでDNSゾーンを作成
+・AWS Lightsailで作成したWordPressを「Let’s Encrypt SSL Certificate」でSSL化する
+・「Let’s Encrypt SSL Certificate」の更新を自動化
+・HTTPSへ強制的にリダイレクトするよう設定
+
+---------------------------------------------------
+■wp-config.phpの権限を600に更新（セキュリティ面考慮）
+    sudo chmod 600 /opt/bitnami/apps/wordpress/htdocs/wp-config.php
+
+■WordPressのBitnamiのバナーを削除
+    sudo /opt/bitnami/apps/wordpress/bnconfig --disable_banner 1
+    sudo /opt/bitnami/ctlscript.sh restart apache
+    
+■DNS設定確認
+    dig example.com
+    
+■WordPressにドメインを設定
+    vi /opt/bitnami/apps/wordpress/htdocs/wp-config.php
+    ---------------------------------------------------
+    define('WP_SITEURL', 'http://example.com/');
+    define('WP_HOME', 'http://example.com/');
+    ---------------------------------------------------
+    
+■AWS Lightsailで作成したWordPressを「Let’s Encrypt SSL Certificate」でSSL化する
+    cd /tmp/
+    https://api.github.com/repos/xenolf/lego/releases/latest で「browser_download_url」「linux_amd64」がマッチするtar.gz	ファイルを探す（今回はこれ　https://github.com/go-acme/lego/releases/download/v3.8.0/lego_v3.8.0_linux_amd64.tar.gz 	）
+	wget -i <上で探し当てたURL>
+    wget https://github.com/go-acme/lego/releases/download/v3.8.0/lego_v3.8.0_linux_amd64.tar.gz
+    ls
+    tar xf lego_v*
+    ls
+    sudo mv lego /usr/local/bin/lego
+    sudo /opt/bitnami/ctlscript.sh stop
+    sudo lego --email="example@gmail.com" --domains="example.com" --path="/etc/lego" --http run
+    sudo mv /opt/bitnami/apache2/conf/server.crt /opt/bitnami/apache2/conf/server.crt.old
+    sudo mv /opt/bitnami/apache2/conf/server.key /opt/bitnami/apache2/conf/server.key.old
+    sudo mv /opt/bitnami/apache2/conf/server.csr /opt/bitnami/apache2/conf/server.csr.old
+	sudo ln -s /etc/lego/certificates/example.com.key /opt/bitnami/apache2/conf/server.key
+	sudo ln -s /etc/lego/certificates/example.com.crt /opt/bitnami/apache2/conf/server.crt
+	sudo chown root:root /opt/bitnami/apache2/conf/server*
+	sudo chmod 600 /opt/bitnami/apache2/conf/server*
+	sudo /opt/bitnami/ctlscript.sh start
+
+■「Let’s Encrypt SSL Certificate」の更新を自動化
+    sudo vi /etc/lego/renew-certificate.sh
+    sudo ll /etc/lego/
+    sudo ls -l /etc/lego/
+    sudo chmod +x /etc/lego/renew-certificate.sh
+    sudo ls -l /etc/lego/
+    sudo crontab -e
+    sudo crontab -l
+
+■HTTPSへ強制的にリダイレクトするよう設定
+    vi /opt/bitnami/apache2/conf/bitnami/bitnami.conf
+    sudo /opt/bitnami/ctlscript.sh restart apache
+---------------------------------------------------
